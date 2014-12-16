@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :map_test
   resources :tests
 
   # The priority is based upon order of creation: first created -> highest priority.
