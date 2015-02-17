@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'tweet#index' 
   get 'tweet/index'
-
+  resources :users
+  resources :map_test
   resources :tests
 
   # The priority is based upon order of creation: first created -> highest priority.

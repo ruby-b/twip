@@ -44,3 +44,5 @@ gem 'twitter-bootstrap-rails'
 gem 'kaminari'
 gem 'rb-readline'
 gem 'twitter'
+gem "gmaps4rails"
+gem "geocoder"
