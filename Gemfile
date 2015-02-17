@@ -39,9 +39,13 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+<<<<<<< HEAD
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
 gem 'rb-readline'
 
 
+=======
+gem 'twitter'
+>>>>>>> d5e05b697b3d050b585965ec01968c670078e5af
