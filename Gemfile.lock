@@ -43,6 +43,8 @@ GEM
     execjs (2.2.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    geocoder (1.2.6)
+    gmaps4rails (2.1.2)
     hike (1.2.3)
     http (0.6.3)
       http_parser.rb (~> 0.6.0)
@@ -139,6 +141,8 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   execjs
+  geocoder
+  gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
   mysql2

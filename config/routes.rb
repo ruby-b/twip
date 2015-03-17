@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :map_test
   resources :tests
 
   get '/search_tweets',:controller => 'search_tweets', :action => 'search_tweets'
