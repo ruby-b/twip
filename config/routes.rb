@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resources :map_test
   resources :tests
 
+  resources :keyword
+  resources :weather,:only => :index
+  resources :accident,:only => :index
+  resources :fire,:only => :index
+
   get '/search_tweets',:controller => 'search_tweets', :action => 'search_tweets'
 
   # The priority is based upon order of creation: first created -> highest priority.

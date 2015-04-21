@@ -4,7 +4,7 @@ $(function() {
   $.ajax({
     type: "GET",
     url: "<%= escape_javascript(search_tweets_url) %>",
-    data: "text=oosaka&latitude=34.686316&longitude=135.519711",
+    data: "latitude=34.686316&longitude=135.519711",
     dataType: 'json',
     success: function(json) {
       var len = json.length;
@@ -19,8 +19,12 @@ $(function() {
 
 <div id="tweets_window" style="float:right; width:400px">
   <div id="tweet0"></div>
+<br>
   <div id="tweet1"></div>
+<br>
   <div id="tweet2"></div>
+<br>
   <div id="tweet3"></div>
+<br>
   <div id="tweet4"></div>
 </div>
