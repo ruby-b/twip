@@ -11,36 +11,35 @@ class SearchTweetsController < ApplicationController
     Rails.logger.debug("------------------")
     Rails.logger.debug(params[:text])
     Rails.logger.debug("------------------")
-    if params[:text].blank?
-      tweets = client.search("#{params[:text]}",:geocode=>"#{params[:latitude]},#{params[:longitude]},5km",:count=>2)
-      tweets.take(5).each do |f|
+    if params[:text].present?
+      tweets = client.search("#{params[:text]}",:geocode =>"#{params[:latitude]},#{params[:longitude]},5km",:count => 10).take(10).each do |f|
         tweet_hash ={}
         tweet_hash.store("user_name",f.user.name)
         tweet_hash.store("screen_name",f.user.screen_name)
         tweet_hash.store("icon","#{f.user.profile_image_url.scheme}://#{f.user.profile_image_url.host}#{f.user.profile_image_url.path}")
         tweet_hash.store("text",f.text)
-        tweet_hash.store("latitude",f.geo.lat)
-        tweet_hash.store("longitude",f.geo.long)
+        tweet_hash.store("latitude","#{f.geo.lat}")
+        tweet_hash.store("longitude","#{f.geo.long}")
         tweet_hash.store("url","http://twitter.com/#{f.user.screen_name}/status/#{f.user.status.id}")
         @tweet.push(tweet_hash)
       end
-    render :json => @tweet
-    return
+      render :json => @tweet
+      return
     end
     #5km wo kahen ni siteoku   henkyaku naiyou ni latitude longitude url icon wo tuikasuru
-    tweets = client.search("#{params[:text]}",:geocode=>"#{params[:latitude]},#{params[:longitude]},5km",:count=>2)
-    tweets.take(5).each do |f|
-      tweet_hash ={}
-      tweet_hash.store("user_name",f.user.name)
-      tweet_hash.store("screen_name",f.user.screen_name)
-      tweet_hash.store("icon","#{f.user.profile_image_url.scheme}://#{f.user.profile_image_url.host}#{f.user.profile_image_url.path}")
-      tweet_hash.store("text",f.text)
-      tweet_hash.store("latitude",f.geo.lat)
-      tweet_hash.store("longitude",f.geo.long)
-      tweet_hash.store("url","http://twitter.com/#{f.user.screen_name}/status/#{f.user.status.id}")
-      @tweet.push(tweet_hash)
-    end
-    render :json => @tweet
+    #tweets = client.search("#{params[:text]}",:geocode=>"#{params[:latitude]},#{params[:longitude]},5km",:count=>2)
+    #tweets.take(5).each do |f|
+    #  tweet_hash ={}
+    #  tweet_hash.store("user_name",f.user.name)
+    #  tweet_hash.store("screen_name",f.user.screen_name)
+    #  tweet_hash.store("icon","#{f.user.profile_image_url.scheme}://#{f.user.profile_image_url.host}#{f.user.profile_image_url.path}")
+    #  tweet_hash.store("text",f.text)
+    #  tweet_hash.store("latitude",f.geo.lat)
+    #  tweet_hash.store("longitude",f.geo.long)
+    #  tweet_hash.store("url","http://twitter.com/#{f.user.screen_name}/status/#{f.user.status.id}")
+    #  @tweet.push(tweet_hash)
+    #end
+    #render :json => @tweet
   end
 
 end
