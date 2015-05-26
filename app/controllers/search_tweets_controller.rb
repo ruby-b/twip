@@ -8,11 +8,8 @@ class SearchTweetsController < ApplicationController
       config.oauth_token_secret = "oeElSxhXZNXUFmjY2U8lLvauhuZrmbJpXyZnmPSTT3IpE"
     end
     @tweet = []
-    Rails.logger.debug("------------------")
-    Rails.logger.debug(params[:text])
-    Rails.logger.debug("------------------")
     if params[:text].present?
-      tweets = client.search("#{params[:text]}",:geocode =>"#{params[:latitude]},#{params[:longitude]},5km",:count => 10).take(10).each do |f|
+      tweets = client.search("#{params[:text]}",:geocode =>"#{params[:latitude]},#{params[:longitude]},5km",:count => 30).take(30).each do |f|
         tweet_hash ={}
         tweet_hash.store("user_name",f.user.name)
         tweet_hash.store("screen_name",f.user.screen_name)
