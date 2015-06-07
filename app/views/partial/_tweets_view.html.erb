@@ -1,0 +1,30 @@
+<script type="text/javascript">
+$(function() {
+  var window = $('#tweets_window');
+  $.ajax({
+    type: "GET",
+    url: "<%= escape_javascript(search_tweets_url) %>",
+    data: "latitude=34.686316&longitude=135.519711",
+    dataType: 'json',
+    success: function(json) {
+      var len = json.length;
+      for(var i=0; i < len; i++){
+        $('#tweet' + i).html(json[i].user_name +"(" + "@" + json[i].screen_name + ")" + "<br>" + json[i].text + "<br>");
+      }
+      alert(len);
+    }
+  });
+});
+</script>
+
+<div id="tweets_window" style="float:right; width:400px;border:solid;">
+  <div id="tweet0" style="border-bottom:solid"></div>
+<br>
+  <div id="tweet1" style="border-bottom:solid"></div>
+<br>
+  <div id="tweet2" style="border-bottom:solid"></div>
+<br>
+  <div id="tweet3" style="border-bottom:solid"></div>
+<br>
+  <div id="tweet4" style="border-bottom:solid"></div>
+</div>

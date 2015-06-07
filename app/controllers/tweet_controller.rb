@@ -1,5 +1,6 @@
-class MapTestController < ApplicationController
+class TweetController < ApplicationController
   def index
+    @text = params[:text]
     @users = User.all
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude

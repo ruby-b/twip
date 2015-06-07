@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
+  root 'tweet#index' 
+  get 'tweet/index'
+  resources :users
+  resources :map_test
   resources :tests
+
+  resources :keyword
+  resources :weather,:only => :index
+  resources :accident,:only => :index
+  resources :fire,:only => :index
+
+  get '/search_tweets',:controller => 'search_tweets', :action => 'search_tweets'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
